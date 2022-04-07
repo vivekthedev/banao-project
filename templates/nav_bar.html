@@ -1,0 +1,33 @@
+<nav class="navbar navbar-dark bg-dark mb-5">
+    <div class="container">
+        <a href="{% url 'home' %}" style="text-decoration: none;">
+
+            {% if request.user.is_authenticated %}
+            {% if request.user.is_doctor %}
+            <span class="navbar-brand mb-0 h1">
+            
+                Hello Doctor {{request.user.first_name}}
+            </span>
+            {% else %}
+            <span class="navbar-brand mb-0 h1">
+            
+                Hello Patient {{request.user.first_name}}
+            </span>
+                
+            {% endif %}
+                
+            <a href="{% url 'logout' %}">
+
+                <button type="button" class="btn btn-danger">Log Out</button>
+            </a>
+            {% else %}
+            <span class="navbar-brand mb-0 h1">Welcome</span>
+            <a href="{% url 'login' %}">
+                <button class="btn btn-success">Log In</button>
+            </a>
+            {% endif %}
+        </a>
+
+    </div>
+</nav>
+
